@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: springboot
-        image: 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v2
+        image: 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v3
         ports:
         - containerPort: 8080
 ---
