@@ -15,3 +15,6 @@ phases:
     commands:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME:$CODEBUILD_START_TIME
       - sed -i -e "s/\($AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com.cn\/[^:]*:\)[a-z0-9_-]*/\1$CODEBUILD_START_TIME/g" ./manifests/test-app.yml
+      - git add .
+      - git commit -m "tag image to $CODEBUILD_START_TIME"
+      - git push origin main
