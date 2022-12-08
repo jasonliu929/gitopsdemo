@@ -17,4 +17,5 @@ phases:
       - sed -i -e "s/\($AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com.cn\/[^:]*:\)[a-z0-9_-]*/\1$CODEBUILD_START_TIME/g" ./manifests/test-app.yml
       - git add .
       - git commit -m "change image Tag to $CODEBUILD_START_TIME"
+      - git remote set-url origin https://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@github.com/jasonliu929/gitopsdemo.git
       - git push origin main
