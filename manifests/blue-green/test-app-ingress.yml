@@ -9,23 +9,23 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/actions.blue-green: |
-      {
-        "type":"forward",
-        "forwardConfig":{
-          "targetGroups":[
+     {
+        type:forward,
+        forwardConfig:{
+          targetGroups:[
             {
-              "serviceName":"service-test-app-v1",
-              "servicePort":"8080",
-              "weight":50
+              serviceName:service-test-app-v1,
+              servicePort:8080,
+              weight:50
             },
             {
-              "serviceName":"service-test-app-v2",
-              "servicePort":"8080",
-              "weight":50
+              serviceName:service-test-app-v2,
+              servicePort:8080,
+              weight:50
             }
           ]
         }
-      }
+     }
   labels:
     app: test-app
 spec:
@@ -36,6 +36,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: service-test-app-v1
+              name: blue-green
               port:
                 name: use-annotation
