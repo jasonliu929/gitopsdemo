@@ -36,6 +36,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: blue-green
+              name: service-test-app-v1
               port:
                 name: use-annotation
