@@ -6,7 +6,6 @@ phases:
       - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       - aws --version
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
-      - git remote set-url origin https://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@github.com/jasonliu929/gitopsdemo.git
   build:
     commands:
       - ./mvnw package
@@ -16,6 +15,3 @@ phases:
     commands:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME:$CODEBUILD_START_TIME
       - sed -i -e "s/\($AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com.cn\/[^:]*:\)[a-z0-9_-]*/\1$CODEBUILD_START_TIME/g" ./manifests/test-app.yml
-      - git add .
-      - git commit -m "change image Tag to $CODEBUILD_START_TIME"
-      - git push origin main
