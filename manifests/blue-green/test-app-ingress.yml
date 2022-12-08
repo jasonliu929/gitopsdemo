@@ -16,12 +16,12 @@ metadata:
             {
               "serviceName":"service-test-app-v1",
               "servicePort":"8080",
-              "weight":100
+              "weight":50
             },
             {
               "serviceName":"service-test-app-v2",
               "servicePort":"8080",
-              "weight":0
+              "weight":50
             }
           ]
         }
