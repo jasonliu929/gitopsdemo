@@ -9,8 +9,8 @@ phases:
   build:
     commands:
       - ./mvnw package
-      - docker build -t test-app:v2 .
-      - docker tag test-app:v2 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v2
+      - docker build -t test-app:v1 .
+      - docker tag test-app:v1 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v1
   post_build:
     commands:
-      - docker push 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v2
+      - docker push 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v1

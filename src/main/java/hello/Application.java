@@ -11,7 +11,7 @@ public class Application {
 
   @RequestMapping("/")
   public String home() {
-    return "You are reaching version 2.\n";
+    return "You are reaching version 1.\n";
   }
 
   public static void main(String[] args) {
