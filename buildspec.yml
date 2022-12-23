@@ -3,14 +3,12 @@ version: 0.2
 phases:
   install:
     commands:
-      - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-      - aws --version
       - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 373127939256.dkr.ecr.us-west-2.amazonaws.com
   build:
     commands:
       - ./mvnw package
-      - docker build -t test-app:v2 .
-      - docker tag test-app:v2 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v2
+      - docker build -t test-app:v1 .
+      - docker tag test-app:v1 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v1
   post_build:
     commands:
-      - docker push 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v2
+      - docker push 373127939256.dkr.ecr.us-west-2.amazonaws.com/test-app:v1
